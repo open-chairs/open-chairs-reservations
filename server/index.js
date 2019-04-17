@@ -39,12 +39,24 @@ app.post('/reservation', (req, res) => {
       })
 })
 
-app.patch('/times/:urlID', (req, res) => {
+app.patch('/reservation/:urlID', (req, res) => {
   let restID = req.params.urlID;
   dbQuery.updateReservation(restID)
     .then((data) => {
       console.log(data);
       res.send(data)
+    })
+    .catch((err) => {
+      res.sendStatus(err)
+    })
+})
+
+app.delete('/times:urlID', (req, res) => {
+  let restID = req.params.urlID;
+  dbQuery.deleteReservation(restID)
+    .then((data) => {
+      console.log(data);
+      res.send(data);
     })
     .catch((err) => {
       res.sendStatus(err)

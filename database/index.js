@@ -50,9 +50,22 @@ const updateReservation = (restID) => {
   })
 }
 
+const deleteReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM reserved WHERE id = '${restID}'`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
 
 module.exports = {
   getTimes,
   postReservation,
-  updateReservation
+  updateReservation,
+  deleteReservation
 };
