@@ -37,9 +37,22 @@ const postReservation = (restID) => {
   })
 }
 
+const updateReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`UPDATE reserved SET date = '2080-02-22',  time = '08:00:00'
+      WHERE rest_id = ${restID}`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
 
 
 module.exports = {
   getTimes,
-  postReservation
+  postReservation,
+  updateReservation
 };

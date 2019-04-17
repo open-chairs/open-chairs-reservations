@@ -39,5 +39,16 @@ app.post('/reservation', (req, res) => {
       })
 })
 
+app.patch('/times/:urlID', (req, res) => {
+  let restID = req.params.urlID;
+  dbQuery.updateReservation(restID)
+    .then((data) => {
+      console.log(data);
+      res.send(data)
+    })
+    .catch((err) => {
+      res.sendStatus(err)
+    })
+})
 app.listen(port, console.log(`server is listening on port ${port}`));
 
