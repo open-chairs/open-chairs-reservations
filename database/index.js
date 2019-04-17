@@ -27,8 +27,7 @@ const getTimes = (restID) => {
 
 const postReservation = (restID) => {
   return new Promise((resolve, reject) => {
-    connection.insert(`INSERT INTO reserved (date, time) VALUES ('2019-02-21', '20:00:00')
-    WHERE restaurants.id=${restID}`, (err, results) => {
+    connection.query(`INSERT INTO reserved (rest_id, date, time) VALUES (1 ,'2019-02-21', '20:00:00')`, (err, results) => {
       if(err){
         reject(err);
       } else {
