@@ -25,6 +25,22 @@ const getTimes = (restID) => {
   })
 }
 
-module.exports ={
-  getTimes
+const postReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.insert(`INSERT INTO reserved (date, time) VALUES ('2019-02-21', '20:00:00')
+    WHERE restaurants.id=${restID}`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
+
+
+module.exports = {
+  getTimes,
+  postReservation
 };
