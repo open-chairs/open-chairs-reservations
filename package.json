@@ -23,6 +23,7 @@
     "faker": "^4.1.0",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
+    "pg": "^7.10.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-loader-spinner": "^2.3.0",

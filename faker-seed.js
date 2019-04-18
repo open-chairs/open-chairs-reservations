@@ -32,10 +32,3 @@ for (var i = 1; i < 10000; i++) {
 }
 
 writer.end();
-
-
-// let dataString = JSON.stringify(reservationData);
-
-// fs.writeFile('testData.json', dataString, (err) => {
-//     if(err) console.log(err);
-// });
