@@ -25,6 +25,47 @@ const getTimes = (restID) => {
   })
 }
 
-module.exports ={
-  getTimes
+const postReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`INSERT INTO reserved (rest_id, date, time) VALUES (1 ,'2019-02-21', '20:00:00')`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
+const updateReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`UPDATE reserved SET date = '2080-02-22',  time = '08:00:00'
+      WHERE rest_id = ${restID}`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
+const deleteReservation = (restID) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM reserved WHERE id = '${restID}'`, (err, results) => {
+      if(err){
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
+
+module.exports = {
+  getTimes,
+  postReservation,
+  updateReservation,
+  deleteReservation
 };
