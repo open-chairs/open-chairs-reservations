@@ -21,9 +21,9 @@ var makeResTime = function () {
 writer.pipe(fs.createWriteStream('testData.csv'))
 
 
-for (var i = 1; i < 10000; i++) {
+
+for (var i = 1; i < 1000; i++) {
   writer.write({
-    id: i,
     rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
     date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
     time: makeResTime()
