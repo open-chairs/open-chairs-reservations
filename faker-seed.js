@@ -12,16 +12,31 @@ var makeResTime = function () {
     return resHour + ':' + resMin + ':00'
 }
 
-writer.pipe(fs.createWriteStream('testData.csv'))
+writer.pipe(fs.createWriteStream('derrData.csv'))
+
+var rest_id = () => {
+  return faker.random.number({'min': 1, 'max': 10000000});
+}
+
+var date = () => {
+ return faker.date.between('2019-01-01', '2019-03-31');
+}
+
+function convert(str) {
+  var date = new Date(str),
+      mnth = ("0" + (date.getMonth()+1)).slice(-2),
+      day  = ("0" + date.getDate()).slice(-2);
+  return [ date.getFullYear(), mnth, day ].join("-");
+}
+
 
 const createReservation = () => {
-  return ({ rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
-  date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
-  time: makeResTime()})
+  
+  return {rest_id: rest_id(), date: convert(date()), time: makeResTime()}
 }
 
 function writeMillionsOfReservations() {
-  let i = 10000000;
+  let i = 1000000;
   writeReservations();
   function writeReservations() {
     let ok = true;
@@ -41,13 +56,24 @@ function writeMillionsOfReservations() {
 
 writeMillionsOfReservations();
 
+// wrong save for documentation
+
+
+// const createReservation = () => {
+//   return ({ rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
+//   date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
+//   time: makeResTime()})
+// }
+
+// console.log(date());
+
 // Promisified create reservations
 // const createData = () => {
 //   return new Promise(resolve => {
 //     resolve( writer.write({
-      // rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
-      // date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
-      // time: makeResTime()
+//       rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
+//       date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
+//       time: makeResTime()
 //       }) 
 //   )})
 // }
