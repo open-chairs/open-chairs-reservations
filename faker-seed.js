@@ -12,7 +12,7 @@ var makeResTime = function () {
     return resHour + ':' + resMin + ':00'
 }
 
-writer.pipe(fs.createWriteStream('derrData.csv'))
+writer.pipe(fs.createWriteStream('testData.csv'))
 
 var rest_id = () => {
   return faker.random.number({'min': 1, 'max': 10000000});
