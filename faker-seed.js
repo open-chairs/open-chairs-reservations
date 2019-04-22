@@ -36,7 +36,7 @@ const createReservation = () => {
 }
 
 function writeMillionsOfReservations() {
-  let i = 1000000;
+  let i = 80000000;
   writeReservations();
   function writeReservations() {
     let ok = true;
