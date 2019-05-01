@@ -9,7 +9,7 @@ const PartyDropdown = (props) => {
         <option value="1">For 1</option>
         <option value="2">For 2</option>
         <option value="3">For 3</option>
-        <option selected value="4">For 4</option>
+        <option defaultValue="4">For 4</option>
         <option value="5">For 5</option>
         <option value="6">For 6</option>
         <option value="7">For 7</option>

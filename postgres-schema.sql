@@ -6,8 +6,8 @@
 /* your table name copy pasted into postgres after I createdb and use db */
 CREATE TABLE reservations (
     rest_id int,
-    date varchar(12),
-    time varchar(12)
+    date date NOT NULL,
+    time time NOT NULL
 
 
 );

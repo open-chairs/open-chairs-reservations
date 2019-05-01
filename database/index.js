@@ -1,21 +1,55 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 const Promise = require('bluebird');
 
+var pg = require('pg');
+var conString = "postgres://me:password@localhost:5432/openchairs";
 
-const connection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'reservations'
-});
+const connection = new pg.Client(conString);
+connection.connect();
+
+
+
+// const connection = mysql.createConnection({
+//   user: 'root',
+//   password: '',
+//   database: 'reservations'
+// });
 
 // hard-coded data for now
 // refactor when live-data is used
+// const getTimes = (restID) => {
+//   return new Promise((resolve, reject) => {
+//     connection.query(`select reserved.time from reserved, restaurants 
+//       where restaurants.id=${restID} and 
+//       reserved.rest_id = restaurants.id and  
+//       reserved.date = '2019-02-20'`, (err, results) => {
+//         if(err){
+//         reject(err);
+//       } else {
+//         resolve(results);
+//       }
+//     })
+//   })
+// }
+
+// const getTimes = (restID) => {
+//   return new Promise((resolve, reject) => {
+//     connection.query(`SELECT reservations.time FROM reservations 
+//       WHERE reservations.rest_id=${restID} and   
+//       reservations.date = '2019-02-21'`, (err, results) => {
+//         if(err){
+//         reject(err);
+//       } else {
+//         resolve(results);
+//       }
+//     })
+//   })
+// }
+
 const getTimes = (restID) => {
   return new Promise((resolve, reject) => {
-    connection.query(`select reserved.time from reserved, restaurants 
-      where restaurants.id=${restID} and 
-      reserved.rest_id = restaurants.id and  
-      reserved.date = '2019-02-20'`, (err, results) => {
+    connection.query(`SELECT reservations.time FROM reservations 
+      WHERE reservations.rest_id=${restID} `, (err, results) => {
         if(err){
         reject(err);
       } else {

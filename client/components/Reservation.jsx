@@ -22,7 +22,7 @@ class Reservation extends React.Component {
       showInitButton: true,
       available: true,
       loading: false,
-      calDate: moment(),
+      calDate: moment().format('YYYY-MM-DD'),
       validTimes: []
     };
     this.partyHandler = this.partyHandler.bind(this);

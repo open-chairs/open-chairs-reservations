@@ -19,7 +19,7 @@ var rest_id = () => {
 }
 
 var date = () => {
- return faker.date.between('2019-01-01', '2019-03-31');
+ return faker.date.between('2019-05-01', '2019-08-31');
 }
 
 function convert(str) {
@@ -36,7 +36,7 @@ const createReservation = () => {
 }
 
 function writeMillionsOfReservations() {
-  let i = 80000000;
+  let i = 100000000;
   writeReservations();
   function writeReservations() {
     let ok = true;
@@ -56,43 +56,5 @@ function writeMillionsOfReservations() {
 
 writeMillionsOfReservations();
 
-// wrong save for documentation
 
 
-// const createReservation = () => {
-//   return ({ rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
-//   date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
-//   time: makeResTime()})
-// }
-
-// console.log(date());
-
-// Promisified create reservations
-// const createData = () => {
-//   return new Promise(resolve => {
-//     resolve( writer.write({
-//       rest_id: (faker.random.number({'min': 1, 'max': 10000000})),
-//       date: faker.date.between('2019-01-01', '2019-03-31').toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
-//       time: makeResTime()
-//       }) 
-//   )})
-// }
-
-
-// async function asyncCall() {
-//   console.log('calling');
-//   var result = await createData();
-//   console.log(result);
-// }
-
-// let count = 0;
-// let total = 100;
-
-// while ( count < total) {
-//   count++;
-//   asyncCall();
-// }
-
-
-
-// writer.end();
