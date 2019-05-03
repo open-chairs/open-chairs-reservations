@@ -14,6 +14,10 @@ app.use(compression());
 const port = process.env.port || 3000;
 
 app.use('/:urlID', express.static(path.join(__dirname, '../public')));
+
+app.get('/loaderio-5f1d96b3a51c00c3c491dbcfecc52686', (req, res) => {
+  res.send('/loaderio-5f1d96b3a51c00c3c491dbcfecc52686')
+})
 // refactor when live-data is inputted
 app.get('/times/:urlID', (req, res) => {
   let restID = req.params.urlID;
