@@ -2,7 +2,10 @@
 const Promise = require('bluebird');
 
 var pg = require('pg');
-var conString = "postgres://me:password@localhost:5432/openchairs";
+// var conString = "postgres://me:password@localhost:5432/openchairs";
+
+var conString = "postgres://jason:secret-33-sauce@ec2-34-212-99-23.us-west-2.compute.amazonaws.com:5432/openchairs";
+
 
 const connection = new pg.Client(conString);
 connection.connect();
